@@ -1,0 +1,23 @@
+{
+  "name": "twitch-chatbot",
+  "version": "0.0.1",
+  "description": "A chatbot that listens to commands in Twitch chatrooms.",
+  "main": "index.js",
+  "scripts": {
+	"start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Plazide/twitch_chatbot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Plazide/twitch_chatbot/issues"
+  },
+  "homepage": "https://github.com/Plazide/twitch_chatbot#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
