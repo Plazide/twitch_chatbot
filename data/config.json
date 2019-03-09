@@ -1,0 +1,26 @@
+{
+	"development": {
+		"twitch": {
+			"bot_name": "TWITCH_USERNAME_OF_BOT",
+			"bot_token": "OAUTH_TOKEN_FOR_BOT_USER"
+		},
+		"mongo": {
+			"db_name": "MONGODB_NAME",
+			"server": "IP_TO_SERVER",
+			"user": "NAME_OF_MONGODB_USER",
+			"pwd": "PASSWORD_FOR_MONGODB_USER"
+		}
+	},
+	"production": {
+		"twitch": {
+			"bot_name": "TWITCH_USERNAME_OF_BOT",
+			"bot_token": "OAUTH_TOKEN_FOR_BOT_USER"
+		},
+		"mongo": {
+			"db_name": "MONGODB_NAME",
+			"server": "IP_TO_SERVER",
+			"user": "NAME_OF_MONGODB_USER",
+			"pwd": "PASSWORD_FOR_MONGODB_USER"
+		}
+	}
+}
