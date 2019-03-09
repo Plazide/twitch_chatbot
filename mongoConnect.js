@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
-const conf = require("./data/config.json");
-require("dotenv").config();
+const options = require("./options");
 
 const db = mongoose.connection;
 const env = process.env.NODE_ENV || "development";
 
-const mongo = conf[env].mongo;
+const mongo = options.mongo;
 const user = mongo.user;
 const pwd = mongo.pwd;
 const db_name = mongo.db_name;
