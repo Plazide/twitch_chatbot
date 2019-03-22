@@ -4,6 +4,7 @@ const tmi = require("tmi.js");
 const WebSocket = require("ws");
 const mongoose = require("mongoose");
 const options = require("./options");
+const commands = require("./commands");
 require("./mongoConnect");
 
 const opts = {
@@ -24,9 +25,25 @@ client.on("connected", (d) => {
 });
 
 client.on("chat", (channel, userstate, message, self) => {
-	const user = userstate["display-name"];
-
-	console.log(`${user} sent a message in ${channel}'s channel:\n${message}`);
+	runCommand(message, channel, userstate, self);
 });
+
+function runCommand(message, channel, userstate, self){
+	const command = message.substring(1);
+	const args = message.split(" ").slice(1);
+	const params = {
+		client,
+		args,
+		channel,
+		userstate,
+		self
+	}
+
+	// Cancel execution of function if message is not a known command.
+	if(message[0] !== "!") return;
+	if(commands.known.indexOf(command) === -1) return;
+
+	commands[command](params);
+}
 
 client.connect();	
