@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const options = require("./options");
 
 const db = mongoose.connection;
-const env = process.env.NODE_ENV || "development";
 
 const mongo = options.mongo;
 const user = mongo.user;
