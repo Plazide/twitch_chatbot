@@ -15,8 +15,9 @@ function uptime(params){
 
 	const channel = params.channel;
 	const client = params.client;
+	const user = channel.substring(1);
 
-	app.getStreams({channels: "tejbz"}, body => {
+	app.getStreams({channels: user}, body => {
 		const stream = body.data[0];
 		
 		if(!stream){
