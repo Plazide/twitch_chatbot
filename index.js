@@ -5,7 +5,7 @@ const WebSocket = require("ws");
 const mongoose = require("mongoose");
 const TwitchApi = require("node-twitch");
 const options = require("./options");
-const commands = require("./commands");
+const commands = require("./lib/commands");
 require("./mongoConnect");
 
 const opts = {
