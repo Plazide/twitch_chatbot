@@ -1,0 +1,7 @@
+[
+	{
+		"name": "uptime",
+		"func": "uptime",
+		"perm": "all"
+	}
+]
