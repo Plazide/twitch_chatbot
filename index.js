@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 const TwitchApi = require("node-twitch");
 const options = require("./options");
 const commands = require("./lib/commands");
-const youtube = require("./lib/youtube");
 require("./mongoConnect");
 
 const opts = {
@@ -79,6 +78,17 @@ async function isFollower(user, channel){
 	return isFollower;
 }
 
+function getRequiredRank(ranks, cmd){
+	let requiredRank = commands.known.filter( command => {
+		if(command.name === cmd){
+			return true;
+		}
+	});
+	requiredRank = ranks[requiredRank[0].perm];
+
+	return requiredRank;
+}
+
 function hasPermission(cmd, perms){
 	let rank = 0;
 	const ranks = {
@@ -89,12 +99,7 @@ function hasPermission(cmd, perms){
 		mod: 4,
 		broadcaster: 5
 	}
-	const requiredRank = commands.known.map( command => {
-		if(command.name === cmd){
-			return ranks[command.perm];
-		}
-	})[0];
-
+	const requiredRank = getRequiredRank(ranks, cmd)
 	
 	Object.keys(perms).forEach( key => {
 		const hasPerm = perms[key];
@@ -124,7 +129,7 @@ function isKnownCommand(cmd){
 
 function runCommand(args){
 	const message = args.message;
-	const command = args.message.substring(1);
+	const command = args.message.split(" ")[0].substring(1).trim();
 	const perms = args.perms;
 	const channel = args.channel;
 	const self = args.self;
@@ -147,6 +152,7 @@ function runCommand(args){
 		client,
 		cmdArgs,
 		channel,
+		chatter,
 		self
 	}
 
