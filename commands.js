@@ -2,7 +2,7 @@ const TwitchApi = require("node-twitch");
 const helper = require("./helper");
 const options = require("./options");
 
-const known = ["uptime"];
+const known = require("./models/KnownCommands.json");
 const app = new TwitchApi({
 	client_id: options.twitch.client_id,
 	client_secret: options.twitch.client_secret,
