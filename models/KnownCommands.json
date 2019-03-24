@@ -3,5 +3,10 @@
 		"name": "uptime",
 		"func": "uptime",
 		"perm": "all"
+	},
+	{
+		"name": "song",
+		"func": "song",
+		"perm": "all"
 	}
 ]
