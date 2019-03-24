@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const TwitchApi = require("node-twitch");
 const options = require("./options");
 const commands = require("./lib/commands");
+const youtube = require("./lib/youtube");
 require("./mongoConnect");
 
 const opts = {
