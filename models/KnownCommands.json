@@ -1,5 +1,11 @@
 [
 	{
+		"name": "help",
+		"func": "help",
+		"perm": "all",
+		"help": "displays a list of all available commands"
+	},
+	{
 		"name": "uptime",
 		"func": "uptime",
 		"perm": "all",
@@ -22,11 +28,5 @@
 		"func": "clearsongs",
 		"perm": "mod",
 		"help": "removes all the songs from the playlist."
-	},
-	{
-		"name": "help",
-		"func": "help",
-		"perm": "all",
-		"help": "displays a list of all available commands"
 	}
 ]
