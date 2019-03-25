@@ -8,5 +8,10 @@
 		"name": "song",
 		"func": "song",
 		"perm": "all"
+	},
+	{
+		"name": "songs",
+		"func": "songs",
+		"perm": "all"
 	}
 ]
