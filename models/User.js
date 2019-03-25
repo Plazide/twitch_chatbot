@@ -12,8 +12,7 @@ const userSchema = new mongoose.Schema({
 	playlist: [
 		{
 			title: String,
-			url: String,
-			id: String,
+			videoId: String,
 			duration: Number,
 			user: String,
 			added: {type: Date, default: Date.now}
