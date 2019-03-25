@@ -2,41 +2,49 @@ const tmi = require("tmi.js");
 const options = require("./options");
 const commands = require("./lib/commands");
 const pre = require("./lib/pre");
+const User = require("./models/User");
 require("./mongoConnect");
 
-const opts = {
-	identity: {
-		username: options.twitch.bot_name,
-		password: options.twitch.bot_token
-	},
-	connection: {
-		reconnect: true
-	},
-	channels: ["iamstreaming"]
-};
+async function init(){
+	const users = await User.find();
+	const channels = users.map( user => {return user.username});
 
-const client = new tmi.Client(opts);
+	const opts = {
+		identity: {
+			username: options.twitch.bot_name,
+			password: options.twitch.bot_token
+		},
+		connection: {
+			reconnect: true
+		},
+		channels: channels
+	};
 
-client.on("connected", (d) => {
-	console.log("Connected to chat server!");
-});
+	const client = new tmi.Client(opts);
 
-client.on("chat", async (channel, userstate, message, self) => {
-	if(self) return;
+	client.on("connected", (d) => {
+		console.log("Connected to chat server!");
+	});
+	
+	client.on("chat", async (channel, userstate, message, self) => {
+		if(self) return;
+	
+		const perms = await pre.getPerms(userstate, channel.substring(1));
+		const args = {
+			message,
+			userstate,
+			channel,
+			perms,
+			self
+		}
+	
+		runCommand(args, client);
+	});
 
-	const perms = await pre.getPerms(userstate, channel.substring(1));
-	const args = {
-		message,
-		userstate,
-		channel,
-		perms,
-		self
-	}
+	client.connect();	
+}
 
-	runCommand(args);
-});
-
-function runCommand(args){
+function runCommand(args, client){
 	const message = args.message;
 	const command = args.message.split(" ")[0].substring(1).trim();
 	const perms = args.perms;
@@ -68,4 +76,5 @@ function runCommand(args){
 	commands[cmd](params);
 }
 
-client.connect();	
+// Start bot
+init();
