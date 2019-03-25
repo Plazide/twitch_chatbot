@@ -28,5 +28,11 @@
 		"func": "clearsongs",
 		"perm": "mod",
 		"help": "removes all the songs from the playlist."
+	},
+	{
+		"name": "regretsong",
+		"func": "regretsong",
+		"perm": "all",
+		"help": "removes the users previously requested song from the playlist."
 	}
 ]
