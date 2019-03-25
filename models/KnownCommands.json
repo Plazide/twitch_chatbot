@@ -30,7 +30,7 @@
 		"help": "removes all the songs from the playlist."
 	},
 	{
-		"name": "regretsong",
+		"name": "regret",
 		"func": "regretsong",
 		"perm": "all",
 		"help": "removes the users previously requested song from the playlist."
