@@ -1,9 +1,9 @@
 const tmi = require("tmi.js");
-const options = require("./options");
+const options = require("./models/options");
 const commands = require("./lib/commands");
 const pre = require("./lib/pre");
 const User = require("./models/User");
-require("./mongoConnect");
+require("./models/mongoConnect");
 
 async function init(){
 	const users = await User.find();
