@@ -127,6 +127,17 @@ function isKnownCommand(cmd){
 	return result;
 }
 
+function findCmdFunc(cmd){
+	let res;
+
+	for(let item of commands.known){
+		if(item.name === cmd)
+			res = item.func;
+	}
+
+	return res;
+}
+
 function runCommand(args){
 	const message = args.message;
 	const command = args.message.split(" ")[0].substring(1).trim();
@@ -146,7 +157,7 @@ function runCommand(args){
 		return;
 	}
 
-
+	const cmd = findCmdFunc(command);
 	const cmdArgs = message.split(" ").slice(1);
 	const params = {
 		client,
@@ -156,7 +167,7 @@ function runCommand(args){
 		self
 	}
 
-	commands[command](params);
+	commands[cmd](params);
 }
 
 client.connect();	
