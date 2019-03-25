@@ -2,21 +2,31 @@
 	{
 		"name": "uptime",
 		"func": "uptime",
-		"perm": "all"
+		"perm": "all",
+		"help": "displays the amount of time the stream has been live."
 	},
 	{
 		"name": "song",
 		"func": "song",
-		"perm": "all"
+		"perm": "all",
+		"help": "adds a song by a search or youtube url/id, ie. \"!song avicii without you\". If no search, url or id is provided, the command displays the currently playing song."
 	},
 	{
 		"name": "songs",
 		"func": "songs",
-		"perm": "all"
+		"perm": "all",
+		"help": "shows a list of the current playlist."
 	},
 	{
 		"name": "clearsongs",
 		"func": "clearsongs",
-		"perm": "mod"
+		"perm": "mod",
+		"help": "removes all the songs from the playlist."
+	},
+	{
+		"name": "help",
+		"func": "help",
+		"perm": "all",
+		"help": "displays a list of all available commands"
 	}
 ]
