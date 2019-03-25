@@ -11,7 +11,7 @@ const server = mongo.server;
 
 const url = `mongodb://${user}:${pwd}@${server}/${db_name}?authSource=admin`;
 
-mongoose.connect(url, {useNewUrlParser: true})
+mongoose.connect(url, {useNewUrlParser: true, useFindAndModify: false})
 .catch(err => {
 	throw new Error(err);
 });
