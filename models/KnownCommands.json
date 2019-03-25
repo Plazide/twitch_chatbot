@@ -13,5 +13,10 @@
 		"name": "songs",
 		"func": "songs",
 		"perm": "all"
+	},
+	{
+		"name": "clearsongs",
+		"func": "clearsongs",
+		"perm": "mod"
 	}
 ]
