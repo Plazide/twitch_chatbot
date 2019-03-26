@@ -3,6 +3,7 @@ const options = require("./models/options");
 const commands = require("./lib/commands");
 const pre = require("./lib/pre");
 const User = require("./models/User");
+const Websocket = require("./lib/websocket");
 require("./models/mongoConnect");
 
 async function init(){
@@ -21,6 +22,7 @@ async function init(){
 	};
 
 	const client = new tmi.Client(opts);
+	const websocket = new Websocket();
 
 	client.on("connected", (d) => {
 		console.log("Connected to chat server!");
@@ -41,7 +43,8 @@ async function init(){
 		runCommand(args, client);
 	});
 
-	client.connect();	
+	client.connect();
+	websocket.start();
 }
 
 function runCommand(args, client){
