@@ -37,7 +37,8 @@ async function init(){
 			userstate,
 			channel,
 			perms,
-			self
+			self,
+			websocket
 		}
 	
 		runCommand(args, client);
@@ -53,6 +54,7 @@ function runCommand(args, client){
 	const perms = args.perms;
 	const channel = args.channel;
 	const self = args.self;
+	const ws = args.websocket;
 	const chatter = args.userstate["display-name"];
 
 	// Cancel execution of function if the command is invalid in some way.
@@ -73,7 +75,8 @@ function runCommand(args, client){
 		cmdArgs,
 		channel,
 		chatter,
-		self
+		self,
+		ws
 	}
 
 	commands[cmd](params);
