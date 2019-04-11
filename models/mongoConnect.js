@@ -3,15 +3,7 @@ const options = require("./options");
 
 const db = mongoose.connection;
 
-const mongo = options.mongo;
-const user = mongo.user;
-const pwd = mongo.pwd;
-const db_name = mongo.db_name;
-const server = mongo.server;
-
-const url = `mongodb://${user}:${pwd}@${server}/${db_name}?authSource=admin`;
-
-mongoose.connect(url, {useNewUrlParser: true, useFindAndModify: false})
+mongoose.connect(options.mongo.uri, {useNewUrlParser: true, useFindAndModify: false})
 .catch(err => {
 	throw new Error(err);
 });
