@@ -44,6 +44,31 @@ async function init(){
 		runCommand(args, client);
 	});
 
+	websocket.on("listen", async (payload, ws) => {
+		// Find user by their session id.
+		const sess_id = ws.id;
+		const user = await User.findOne({sess_id});
+
+		if(user){
+			const playlist = user.playlist;
+			const data = {
+				topic: "PLAYLIST",
+				playlist
+			}
+
+			websocket.sendToClient(sess_id, data);
+		}else{
+			const data = {
+				topic: "ERROR",
+				msg: "The user was not found."
+			}
+
+			websocket.sendToClient(sess_id, data);
+		}
+		
+		
+	});
+
 	client.connect();
 	websocket.start();
 }
